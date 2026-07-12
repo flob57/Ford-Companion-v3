@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#02070d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Ford Companion">
+  <title>Ford Companion v3</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand-wrap">
+      <div class="ford-oval">Ford</div>
+      <div><b>Companion</b><span>Fiesta 2016</span></div>
+    </div>
+    <div class="top-right"><span id="clock"></span><button id="installBtn" class="icon-button hidden" aria-label="Installer">＋</button></div>
+  </header>
+
+  <main>
+    <section id="home" class="view active">
+      <article class="dashboard-card">
+        <div class="dash-copy"><p class="eyebrow">BONJOUR <span id="driverGreeting">FLORIAN</span></p><h1>Prêt à prendre la route ?</h1><p id="vehicleLine">Fiesta • chargement…</p></div>
+        <div class="speedometer" id="homeGauge" aria-label="Vitesse GPS">
+          <div class="gauge-bezel"></div><div class="gauge-ticks"></div><div class="gauge-ring"></div>
+          <span class="gauge-label g0">0</span><span class="gauge-label g50">50</span><span class="gauge-label g100">100</span><span class="gauge-label g150">150</span>
+          <div class="needle" id="needle"><i></i></div><div class="needle-cap"></div>
+          <div class="speed-value"><span id="gpsSpeed">0</span><small>km/h <em>GPS</em></small></div>
+        </div>
+        <div class="dash-metrics"><div><small>Durée</small><b id="homeDuration">00:00</b></div><div><small>Distance</small><b id="homeDistance">0,0 km</b></div><div><small>Vitesse moy.</small><b id="homeAvg">0 km/h</b></div><div><small>Altitude</small><b id="homeAltitude">—</b></div></div>
+      </article>
+
+      <div class="app-grid">
+        <button class="app-tile" data-action="maps"><img src="assets/apple-maps.svg" alt=""><span>Navigation</span></button>
+        <button class="app-tile" data-go="trip"><img src="assets/road.svg" alt=""><span>Trajet</span></button>
+        <button class="app-tile" data-action="lbc"><img src="assets/lbc.svg" alt=""><span>LBC</span></button>
+        <button class="app-tile" data-action="music"><img src="assets/music.svg" alt=""><span>Musique</span></button>
+        <button class="app-tile" data-action="podcasts"><img src="assets/podcasts.svg" alt=""><span>Podcasts</span></button>
+        <button class="app-tile" data-action="phone"><img src="assets/phone.svg" alt=""><span>Téléphone</span></button>
+        <button class="app-tile" data-go="vehicle"><img src="assets/car.svg" alt=""><span>Véhicule</span></button>
+        <button class="app-tile" data-go="settings"><img src="assets/settings.svg" alt=""><span>Réglages</span></button>
+      </div>
+
+      <article class="card vehicle-summary"><h2>Résumé Road Trip</h2><div class="stats"><div><b id="odo">—</b><small>Kilométrage</small></div><div><b id="avg">—</b><small>Conso. moyenne</small></div><div><b id="fuelSpend">—</b><small>Carburant enregistré</small></div></div></article>
+    </section>
+
+    <section id="trip" class="view">
+      <div class="section-head"><button class="back">‹</button><h1>Trajet en cours</h1></div>
+      <article class="dashboard-card solo-dashboard">
+        <div class="speedometer large" id="tripGauge" aria-label="Vitesse GPS">
+          <div class="gauge-bezel"></div><div class="gauge-ticks"></div><div class="gauge-ring"></div>
+          <span class="gauge-label g0">0</span><span class="gauge-label g50">50</span><span class="gauge-label g100">100</span><span class="gauge-label g150">150</span>
+          <div class="needle" id="tripNeedle"><i></i></div><div class="needle-cap"></div>
+          <div class="speed-value"><span id="tripSpeed">0</span><small>km/h <em>GPS</em></small></div>
+        </div>
+        <div class="dash-metrics"><div><small>Durée</small><b id="tripDuration">00:00</b></div><div><small>Distance</small><b id="tripDistance">0,00 km</b></div><div><small>Vitesse moy.</small><b id="tripAvgSpeed">0 km/h</b></div><div><small>Altitude</small><b id="tripAltitude">—</b></div></div>
+        <button id="tripToggle" class="primary">Démarrer le trajet</button>
+      </article>
+      <article class="card"><h2>Destination rapide</h2><div class="destination"><input id="destination" placeholder="Adresse ou lieu"><button id="openDestination" class="primary compact">Y aller</button></div></article>
+    </section>
+
+    <section id="media" class="view">
+      <div class="section-head"><button class="back">‹</button><h1>Multimédia</h1></div>
+      <button class="now-playing card" data-action="lbc"><img src="assets/lbc.svg" alt="Logo LBC"><div><small>VOTRE FAVORI</small><h2>LBC en direct</h2><p>Ouvrir rapidement l’application ou l’écoute web</p></div><span>▶</span></button>
+      <div class="media-list card">
+        <button data-action="lbc"><img src="assets/lbc.svg" alt=""><span><b>LBC</b><small>Leading Britain’s Conversation</small></span><em>›</em></button>
+        <button data-action="music"><img src="assets/music.svg" alt=""><span><b>Apple Music</b><small>Bibliothèque et lecture</small></span><em>›</em></button>
+        <button data-action="podcasts"><img src="assets/podcasts.svg" alt=""><span><b>Podcasts</b><small>Apple Podcasts</small></span><em>›</em></button>
+        <button data-action="spotify"><img src="assets/spotify.svg" alt=""><span><b>Spotify</b><small>Ouvrir l’application</small></span><em>›</em></button>
+        <button data-action="youtube"><img src="assets/youtube-music.svg" alt=""><span><b>YouTube Music</b><small>Ouvrir l’application</small></span><em>›</em></button>
+      </div>
+      <article class="card"><h2>Lecture dans la Fiesta</h2><p>Le son passe par le Bluetooth du système SYNC. Ford Companion reste un grand lanceur clair, pensé pour être utilisé avant de rouler.</p></article>
+    </section>
+
+    <section id="vehicle" class="view">
+      <div class="section-head"><button class="back">‹</button><h1>Ma Fiesta</h1></div>
+      <article class="car-card card"><div class="car-visual">FIESTA</div><div><h2>Ford Fiesta</h2><p id="registration">—</p><p class="muted">Mise en circulation : 07/11/2016</p></div></article>
+      <article class="stats card"><div><b id="vOdo">—</b><small>Kilométrage</small></div><div><b id="vAvg">—</b><small>Conso. moyenne</small></div><div><b>44 L</b><small>Réservoir</small></div></article>
+      <article class="card"><h2>Derniers pleins</h2><div id="fuelList" class="list"></div></article>
+      <article class="card"><h2>Entretien</h2><div class="stats"><div><b id="maintSpend">—</b><small>Dépenses</small></div><div><b id="maintCount">—</b><small>Opérations</small></div><div><b id="lastService">—</b><small>Dernière révision</small></div></div><div id="maintList" class="list spaced"></div></article>
+    </section>
+
+    <section id="settings" class="view">
+      <div class="section-head"><button class="back">‹</button><h1>Réglages</h1></div>
+      <article class="card settings-list">
+        <h2>Profil</h2>
+        <label>Nom du conducteur<input id="driverName" value="Florian"></label>
+        <label>Application de navigation<select id="navChoice"><option value="apple">Apple Plans</option><option value="google">Google Maps</option><option value="waze">Waze</option></select></label>
+        <label>Adresse d’écoute LBC<input id="lbcUrl" value="https://www.lbc.co.uk/radio/"></label>
+      </article>
+      <article class="card settings-list"><h2>Données Road Trip</h2><label class="secondary file-button">Importer un nouvel export CSV<input id="csvImport" type="file" accept=".csv,text/csv"></label><p class="hint">Le fichier reste sur cet iPhone.</p></article>
+      <button id="saveSettings" class="primary">Enregistrer les réglages</button>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button data-go="home" class="selected">⌂<span>Accueil</span></button>
+    <button data-action="maps">⌁<span>Navigation</span></button>
+    <button data-go="media">♫<span>Média</span></button>
+    <button data-go="vehicle">▣<span>Véhicule</span></button>
+    <button data-go="settings">•••<span>Plus</span></button>
+  </nav>
+  <div id="toast" class="toast"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
